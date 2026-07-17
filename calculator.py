@@ -5,6 +5,39 @@ def sub(x, y):
     return x - y
 def mult(x, y):
     return x * y
+def get_qty():
+    while True:
+        try:
+            qty = int(input("How many numbers do you want to evaluate? "))
+            if qty > 0:
+                break
+            else:
+                print("Enter a number greater than zero.")
+                continue
+        except ValueError:
+            print("Enter a valid quantity.")
+    return qty
+def addition():
+    x = get_qty()
+    sum = 0
+    for _ in range (x):
+        num = float(input("Enter a number: "))
+        sum = sum + num
+    return sum 
+def subtraction():
+    x = get_qty()
+    diff = float(input("Enter the first number: "))
+    for _ in range (x-1):
+        num = float(input("Enter a number: "))
+        diff = diff - num
+    return diff 
+def product():
+    x = get_qty()
+    product = 1
+    for _ in range (x):
+        num = float(input("Enter a number: "))
+        product = product * num
+    return product 
 def div(x, y):
     if y == 0:
         return "Undefined"
@@ -42,7 +75,10 @@ def fact():
 def rem(x, y):
     return (x%y)
 def perc(x, y):
-    return ((x/y)*100)
+    if y == 0:
+        return "Undefined"
+    else:
+        return((x/y)*100)
 def avg():
     def get_qty():
         while True:
@@ -62,15 +98,6 @@ def avg():
     y = average(x)
     return (y/x)
 def max():
-    def get_qty():
-        while True:
-            try:
-                qty = int(input("Enter the number of values you want to compare: "))
-                if qty >= 2:
-                    return qty
-            except ValueError:
-                print("Enter a number greater than or equal to 2.")
-
     def maximum(x):
         largest = float(input("Enter the first number: "))
         for i in range(x - 1):
@@ -82,14 +109,6 @@ def max():
     x = get_qty()
     return maximum(x)
 def min():
-    def get_qty():
-        while True:
-            try:
-                qty = int(input("Enter the number of values you want to compare: "))
-                if qty >= 2:
-                    return qty
-            except ValueError:
-                print("Enter a number greater than or equal to 2.")
     def minimum(y):
         smallest = float(input("Enter the first number: "))
         for i in range(y - 1):
@@ -99,6 +118,26 @@ def min():
         return smallest
     y = get_qty()
     return minimum(y)
+def quadratic():
+    print("Please arrange your equation in the format - ax^2 + bx + c = 0 ")
+    a = float(input("Enter the value of a: "))
+    b = float(input("Enter the value of b: "))
+    c = float(input("Enter the value of c: "))
+    det = b**2 - (4*a*c)
+    if det < 0:
+        print("The roots of the given equation are imaginary.")
+    else:
+        sum_of_roots = (-b / (2*a))
+        product_of_roots = (c / a)
+        root1 = (-b + math.sqrt(det)) / (2*a)
+        root2 = (-b - math.sqrt(det)) / (2*a)
+        if det == 0:
+            print("The roots are real and equal.")
+        else:
+            print("The roots are real.")
+        print(f"The value of roots are: {root1} and {root2}.")
+        print(f"Sum of roots is {sum_of_roots}.")
+        print(f"Product of roots is {product_of_roots}.")
 def main():
     while True:
         print ("==============================")
@@ -116,31 +155,26 @@ def main():
         print("10. Average")
         print("11. Maximum")
         print("12. Minimum")
-        print("13. Exit")
+        print("13. Quadratic Equation Solver")
+        print("14. Exit")
         while True:
             try:
                 op = int(input("What mathematical operation would you want to perform? "))
-                if 1 <= op <= 13:
+                if 1 <= op <= 14:
                     break
                 else:
-                    print("Enter a number between 1 and 13.")
+                    print("Enter a number between 1 and 14.")
             except ValueError:
-                print("Enter a number between 1 and 13.")
+                print("Enter a number between 1 and 14.")
         if op == 1:
-            x = float(input("Enter the first number: "))
-            y = float(input("Enter the second number:"))
-            ans = add(x, y)
-            print(ans)
+            sum = addition()
+            print(f"Sum of the given numbers is {sum}.")
         elif op == 2:
-            x = float(input("Enter the first number: "))
-            y = float(input("Enter the second number: "))
-            ans = sub(x, y)
-            print(ans)
+            diff = subtraction()
+            print(f"Difference of the given numbers is {diff}.")
         elif op == 3:
-            x = float(input("Enter the first number: "))
-            y = float(input("Enter the second number: "))
-            ans = mult(x, y)
-            print(ans)
+           prod = product()
+           print(f"Product of the given numbers is {prod}.")
         elif op == 4:
             x = float(input("Enter the first number: "))
             y = float(input("Enter the second number: "))
@@ -177,6 +211,8 @@ def main():
             ans = min()
             print(f"The smallest number is {ans}.")
         elif op == 13:
+            quadratic()
+        elif op == 14:
             print("Thank You for using my calculator!!")
             break
 main()
