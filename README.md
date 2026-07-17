@@ -19,6 +19,7 @@ ADVANCE OPERATIONS:
 3) Average of Multiple Numbers
 4) Maximum from a List of Numbers
 5) Minimum from a List of Numbers
+6) Quadratic Equation Calculator
 
 INPUT VALIDATION:
 
