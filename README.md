@@ -24,7 +24,7 @@ ADVANCE OPERATIONS:
 INPUT VALIDATION:
 
 The calculator includes error handling for:
-1) Invalid Numberic Inputs
+1) Invalid Numeric Inputs
 2) Division by Zero
 3) Negative Values where Mathematically Invalid
 
